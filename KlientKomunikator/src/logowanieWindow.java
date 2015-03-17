@@ -11,6 +11,10 @@ public class logowanieWindow
     private JButton anulujButton;
     private JButton zalogujButton;
 
+    public logowanieWindow()
+    {
+        //
+    }
 
     public static void openLogowanieWindow()
     {

@@ -8,12 +8,18 @@ import java.awt.event.InputMethodListener;
 public class MainWindow
 {
     private JPanel MainWindow;
-    private JTextArea txtLog;
+    private JTextArea txtLog; //private było
     private JScrollPane scrollPane;
+
+    public MainWindow()
+    {
+        txtLog.append("test");
+    }
 
     public void wpis(String text)
     {
         txtLog.append(text);
+        txtLog.updateUI();
     }
 
     public void run (String[] args) throws Exception
