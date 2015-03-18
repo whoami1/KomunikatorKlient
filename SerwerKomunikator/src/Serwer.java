@@ -25,9 +25,14 @@ public class Serwer
 
     private MainWindow okienko;
 
+    public Serwer()
+    {
+
+    }
+
     public Serwer(MainWindow okno)
     {
-        okienko = okno;
+        this.okienko = okno;
     }
 
     /*public Serwer(JTextArea txtLog)
@@ -37,6 +42,7 @@ public class Serwer
 
     public void log(String text)
     {
+
         okienko.wpis(System.currentTimeMillis() + "|" + text);
         //txtLog.append(System.currentTimeMillis() + "|" + text);
         System.out.println(System.currentTimeMillis() + "|" + text);

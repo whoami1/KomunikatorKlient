@@ -1,9 +1,11 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by Michał Wrzesień on 2015-03-10.
  */
-public class logowanieWindow
+public class logowanieWindow extends JFrame
 {
     private JPasswordField txtHaslo;
     private JTextField txtNick;
@@ -13,7 +15,30 @@ public class logowanieWindow
 
     public logowanieWindow()
     {
-        //
+        initComponents();
+    }
+
+    private void initComponents()
+    {
+          //txtNick.setText("Podaj nick"); //testy
+        anulujButton.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                anulujButtonActionPerformed(e);
+            }
+        });
+    }
+
+    private void anulujButtonActionPerformed(ActionEvent e)
+    {
+        //this.getFrames()[0].setVisible(false);
+        //MainWindow.getFrames()[0].setVisible(true);
+        this.setVisible(false);
+        //MainWindow
+        //this.anulujButton.setText("test");
+        //MainWindow mainwindow = new MainWindow();
     }
 
     public static void openLogowanieWindow()

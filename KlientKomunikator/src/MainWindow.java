@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * Created by Michał Wrzesień on 2015-03-08.
  */
-public class MainWindow
+public class MainWindow extends JFrame
 {
     private JComboBox cmbAdresSerwera;
     private JButton btnTest;
@@ -18,6 +18,11 @@ public class MainWindow
     private JPanel MainWindow;
 
     public MainWindow()
+    {
+        initComponents();
+    }
+
+    private void initComponents()
     {
         btnTest.addMouseListener(new MouseAdapter()
         {
@@ -42,7 +47,10 @@ public class MainWindow
             @Override
             public void mouseClicked(MouseEvent e)
             {
+
                 logowanieWindow.openLogowanieWindow();
+
+
             }
         });
 

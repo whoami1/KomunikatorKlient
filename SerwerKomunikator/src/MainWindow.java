@@ -13,24 +13,13 @@ public class MainWindow
 
     public MainWindow()
     {
-        txtLog.append("test");
+        txtLog.append("testtetsy");
     }
 
-    public void wpis(String text)
+     public void wpis(String text)
     {
         txtLog.append(text);
-        txtLog.updateUI();
     }
-
-    public void run (String[] args) throws Exception
-    {
-        Serwer serw = new Serwer(this);
-        serw.connect();
-    }
-
-     //Moje kombinacje
-
-
 
     public static void main(String[] args)
     {
@@ -41,15 +30,10 @@ public class MainWindow
         frame.pack();
         frame.setVisible(true);
 
-       try
-        {
-            MainWindow obj = new MainWindow ();
-            obj.run (args);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace ();
-        }
+        MainWindow obj = new MainWindow ();
+        Serwer serw = new Serwer(obj);
+        serw.connect();
     }
 
 }
+
