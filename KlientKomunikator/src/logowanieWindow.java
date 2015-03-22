@@ -5,15 +5,15 @@ import java.awt.event.ActionListener;
 /**
  * Created by Michał Wrzesień on 2015-03-10.
  */
-public class logowanieWindow extends JFrame
+public class LogowanieWindow extends JFrame
 {
     private JPasswordField txtHaslo;
     private JTextField txtNick;
-    private JPanel logowanieWindow;
+    private JPanel LogowanieWindow;
     private JButton anulujButton;
     private JButton zalogujButton;
 
-    public logowanieWindow()
+    public LogowanieWindow()
     {
         initComponents();
     }
@@ -26,25 +26,17 @@ public class logowanieWindow extends JFrame
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                anulujButtonActionPerformed(e);
+                JFrame topFrame = (JFrame)SwingUtilities.getWindowAncestor(LogowanieWindow);
+                topFrame.dispose();
+                MainWindow.getFrames()[0].setVisible(true);
             }
         });
     }
 
-    private void anulujButtonActionPerformed(ActionEvent e)
-    {
-        //this.getFrames()[0].setVisible(false);
-        //MainWindow.getFrames()[0].setVisible(true);
-        this.setVisible(false);
-        //MainWindow
-        //this.anulujButton.setText("test");
-        //MainWindow mainwindow = new MainWindow();
-    }
-
     public static void openLogowanieWindow()
     {
-        JFrame frame = new JFrame("logowanieWindow");
-        frame.setContentPane(new logowanieWindow().logowanieWindow);
+        JFrame frame = new JFrame("LogowanieWindow");
+        frame.setContentPane(new LogowanieWindow().LogowanieWindow);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

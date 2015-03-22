@@ -1,8 +1,6 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 
 /**
@@ -47,10 +45,9 @@ public class MainWindow extends JFrame
             @Override
             public void mouseClicked(MouseEvent e)
             {
-
-                logowanieWindow.openLogowanieWindow();
-
-
+                LogowanieWindow.openLogowanieWindow();
+                JFrame topFrame = (JFrame)SwingUtilities.getWindowAncestor(MainWindow);
+                topFrame.dispose();
             }
         });
 
@@ -59,7 +56,9 @@ public class MainWindow extends JFrame
             @Override
             public void mouseClicked(MouseEvent e)
             {
-                rejestracjaWindow.openRejestracjaWindow();
+                RejestracjaWindow.openRejestracjaWindow();
+                JFrame topFrame = (JFrame)SwingUtilities.getWindowAncestor(MainWindow);
+                topFrame.dispose();
             }
         });
     }

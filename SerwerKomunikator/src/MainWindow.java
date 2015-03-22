@@ -1,6 +1,6 @@
 import javax.swing.*;
-import java.awt.event.InputMethodEvent;
-import java.awt.event.InputMethodListener;
+        import java.awt.event.InputMethodEvent;
+        import java.awt.event.InputMethodListener;
 
 /**
  * Created by Michał Wrzesień on 2015-03-09.
@@ -8,32 +8,39 @@ import java.awt.event.InputMethodListener;
 public class MainWindow
 {
     private JPanel MainWindow;
-    private JTextArea txtLog; //private było
-    private JScrollPane scrollPane;
+    private JTextArea txtLog;
 
     public MainWindow()
     {
-        txtLog.append("testtetsy");
+        //txtLog.append("testtetsy");
+        //txtLog.append(log);
+        initComponents();
     }
 
-     public void wpis(String text)
+    private void initComponents()
+    {
+        wpis("test ");
+    }
+
+    public void wpis(String text)
     {
         txtLog.append(text);
     }
 
+
     public static void main(String[] args)
     {
         JFrame frame = new JFrame("MainWindow");
+        MainWindow obj = new MainWindow ();
         frame.setTitle("Michał Wrzesień - komunikator - serwer");
-        frame.setContentPane(new MainWindow().MainWindow);
+        frame.setContentPane(obj.MainWindow);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
 
-        MainWindow obj = new MainWindow ();
+        //MainWindow obj = new MainWindow ();
         Serwer serw = new Serwer(obj);
         serw.connect();
     }
 
 }
-
