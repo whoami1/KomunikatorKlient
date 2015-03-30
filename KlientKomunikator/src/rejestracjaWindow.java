@@ -21,7 +21,6 @@ public class RejestracjaWindow
 
     private void initComponents()
     {
-        //txtNick.setText("Podaj nick"); //testy
         anulujButton.addActionListener(new ActionListener()
         {
             @Override
@@ -36,7 +35,7 @@ public class RejestracjaWindow
 
     public static void openRejestracjaWindow()
     {
-        JFrame frame = new JFrame("RejestracjaWindow");
+        JFrame frame = new JFrame("Komunikator - Rejestracja");
         frame.setContentPane(new RejestracjaWindow().RejestracjaWindow);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();

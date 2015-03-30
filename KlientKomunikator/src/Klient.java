@@ -1,30 +1,25 @@
 /**
  * Created by Michał Wrzesień on 2015-03-09.
  */
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class Klient
-{
+public class Klient {
     private static final int PORT = 50000;
     Socket socket = null;
 
-    public Klient()
-    {
+    public Klient() {
 
     }
 
-    public void connect(String host) throws IOException
-    {
-        try
-        {
+    public void connect(String host) throws IOException {
+        try {
             socket = new Socket(host, PORT);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             System.err.println("Nie można połączyć się z " + host + ":" + PORT);
             System.exit(1);
         }
@@ -32,31 +27,23 @@ public class Klient
         final PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
         final BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-        Thread t = new Thread(new Runnable()
-        {
-            public void run()
-            {
+        Thread t = new Thread(new Runnable() {
+            public void run() {
                 //long start = System.currentTimeMillis();
 
-                while (true)
-                {
-                    try
-                    {
+                while (true) {
+                    try {
                         String read = reader.readLine();
 
-                        if (read != null)
-                        {
+                        if (read != null) {
                             System.out.println(System.currentTimeMillis() + " Server: " + read);
                         }
 
-                        if (read.equals("Ping")) //jezeli serwer wyslal 'Ping'
-                        {
+                        if (read.equals("Ping")) {
                             writer.println("Pong"); //odpowiadamy 'Pong'
                             System.out.println(System.currentTimeMillis() + " Client: Pong");
                         }
-                    }
-                    catch (IOException ioe)
-                    {
+                    } catch (IOException ioe) {
                         //
                     }
                 }

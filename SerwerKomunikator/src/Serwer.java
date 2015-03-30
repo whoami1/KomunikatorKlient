@@ -19,26 +19,18 @@ public class Serwer
 
     private static ServerSocket serverSocket;
     private static Socket clientSocket;
-    // private static JTextArea txtLog;
     private MainWindow okienko;
 
     public Serwer(MainWindow okno)
     {
         this.okienko = okno;
-        //this.okienko.wpis("asd");
     }
-
-    /*public Serwer(JTextArea txtLog)
-
-    {
-        this.txtLog = txtLog;
-    }*/
 
     public void log(String text)
     {
         okienko.wpis(System.currentTimeMillis() + "|" + text + "\n");
-        //txtLog.append(System.currentTimeMillis() + "|" + text);
         System.out.println(System.currentTimeMillis() + "|" + text);
+        //System.out.println(System.nanoTime() + "|" + text);
     }
 
     public void connect()
@@ -54,7 +46,7 @@ public class Serwer
             System.exit(1);
         }
 
-        log("Waiting for connection...");
+        log("Oczekiwanie na połączenie...");
 
         Thread t = new Thread(new Runnable()
         {

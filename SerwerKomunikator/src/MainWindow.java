@@ -12,21 +12,13 @@ public class MainWindow
 
     public MainWindow()
     {
-        //txtLog.append("testtetsy");
-        //txtLog.append(log);
-        initComponents();
-    }
 
-    private void initComponents()
-    {
-        wpis("test ");
     }
 
     public void wpis(String text)
     {
         txtLog.append(text);
     }
-
 
     public static void main(String[] args)
     {
@@ -38,7 +30,6 @@ public class MainWindow
         frame.pack();
         frame.setVisible(true);
 
-        //MainWindow obj = new MainWindow ();
         Serwer serw = new Serwer(obj);
         serw.connect();
     }

@@ -8,10 +8,11 @@ import java.awt.event.ActionListener;
 public class LogowanieWindow extends JFrame
 {
     private JPasswordField txtHaslo;
-    private JTextField txtNick;
+    private JTextField txtLogin;
     private JPanel LogowanieWindow;
     private JButton anulujButton;
     private JButton zalogujButton;
+    private JLabel stanLogowanieLabel;
 
     public LogowanieWindow()
     {
@@ -20,7 +21,6 @@ public class LogowanieWindow extends JFrame
 
     private void initComponents()
     {
-          //txtNick.setText("Podaj nick"); //testy
         anulujButton.addActionListener(new ActionListener()
         {
             @Override
@@ -35,7 +35,7 @@ public class LogowanieWindow extends JFrame
 
     public static void openLogowanieWindow()
     {
-        JFrame frame = new JFrame("LogowanieWindow");
+        JFrame frame = new JFrame("Komunikator - Logowanie");
         frame.setContentPane(new LogowanieWindow().LogowanieWindow);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();

@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -22,42 +24,30 @@ public class MainWindow extends JFrame
 
     private void initComponents()
     {
-        btnTest.addMouseListener(new MouseAdapter()
-        {
-            @Override
-            public void mouseClicked(MouseEvent ae)
-            {
+        btnTest.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 txtTest.setText("test");
                 Klient klient = new Klient();
-                try
-                {
+                try {
                     klient.connect(cmbAdresSerwera.getSelectedItem().toString());
-                }
-                catch(IOException ex)
-                {
+                } catch (IOException ex) {
                     System.out.println("Blad w connect() - " + ex.toString());
                 }
             }
         });
 
-        logowanieButton.addMouseListener(new MouseAdapter()
-        {
-            @Override
-            public void mouseClicked(MouseEvent e)
-            {
+        logowanieButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 LogowanieWindow.openLogowanieWindow();
-                JFrame topFrame = (JFrame)SwingUtilities.getWindowAncestor(MainWindow);
+                JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(MainWindow);
                 topFrame.dispose();
             }
         });
 
-        rejestracjaButton.addMouseListener(new MouseAdapter()
-        {
-            @Override
-            public void mouseClicked(MouseEvent e)
-            {
+        rejestracjaButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 RejestracjaWindow.openRejestracjaWindow();
-                JFrame topFrame = (JFrame)SwingUtilities.getWindowAncestor(MainWindow);
+                JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(MainWindow);
                 topFrame.dispose();
             }
         });
@@ -65,7 +55,7 @@ public class MainWindow extends JFrame
 
     public static void main(String[] args)
     {
-        JFrame frame = new JFrame("MainWindow");
+        JFrame frame = new JFrame("Komunikator");
         frame.setContentPane(new MainWindow().MainWindow);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
