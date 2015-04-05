@@ -14,7 +14,7 @@ public class MainWindow extends JFrame
     private JButton btnTest;
     private JButton logowanieButton;
     private JButton rejestracjaButton;
-    private JTextField txtTest;
+    //private JTextField txtTest;
     private JPanel MainWindow;
 
     public MainWindow()
@@ -26,7 +26,6 @@ public class MainWindow extends JFrame
     {
         btnTest.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                txtTest.setText("test");
                 Klient klient = new Klient();
                 try {
                     klient.connect(cmbAdresSerwera.getSelectedItem().toString());

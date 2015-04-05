@@ -11,6 +11,7 @@ class Zegar extends JLabel implements Runnable
 {
     // wątek
     private Thread watek;
+    private boolean looped;
     // liczba milisekund pauzy (1000 ms czyli 1 sekunda)
     private int pauza = 1000;
 
@@ -34,6 +35,7 @@ class Zegar extends JLabel implements Runnable
         // jeśli nie ma działającego wątka, utwórz i uruchom nowy
         if (watek == null)
         {
+            looped = true;
             watek = new Thread(this);
             watek.start();
         }
@@ -42,8 +44,13 @@ class Zegar extends JLabel implements Runnable
     // metoda wywołana po starcie wątku
     public void run()
     {
+//        if (watek == Thread.currentThread())
+//        {
+//            return;
+//        }
+
         // dopóki zmienna watek wskazuje na bieżący wątek
-        while ( watek == Thread.currentThread())
+        while (looped)
         {
             // nowy obiekt klasy Date
             Date time = new Date();
@@ -56,14 +63,30 @@ class Zegar extends JLabel implements Runnable
                 // wstrzymujemy działanie wątku na 1 sekundę
                 watek.sleep(pauza);
             }
-            catch (InterruptedException e) {}
+            catch (InterruptedException e)
+            {
+                break;
+            }
         }
     }
 
     // metoda zatrzymująca zegar (wątek)
     public void stop()
     {
+        if (watek == null)
+        {
+            return;
+        }
+
+        looped = false;
+
         // ustawiamy referencję watek na null
+        watek.interrupt();
+        try {
+            watek.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         watek = null;
     }
 }

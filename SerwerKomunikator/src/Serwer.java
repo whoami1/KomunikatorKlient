@@ -1,5 +1,6 @@
 /**
  * Created by Michał Wrzesień on 2015-03-09.
+ *
  */
 import sun.net.ConnectionResetException;
 
