@@ -48,4 +48,13 @@ public class KontaktyWindow
         frame.pack();
         frame.setVisible(true);
     }
+
+    public void show() {
+        JFrame frame = new JFrame("Komunikator - Kontakty");
+        JPanel kontaktyWindow = new KontaktyWindow().KontaktyWindow;
+        frame.setContentPane(kontaktyWindow);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
 }
