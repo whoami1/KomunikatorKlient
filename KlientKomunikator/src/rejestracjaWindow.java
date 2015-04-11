@@ -7,38 +7,76 @@ import java.awt.event.ActionListener;
  */
 public class RejestracjaWindow
 {
-    private JTextField textNick;
-    private JTextField textLogin;
+    private JTextField txtLogin;
     private JPasswordField txtHaslo;
     private JButton zarejestrujButton;
     private JButton anulujButton;
     private JPanel RejestracjaWindow;
 
-    public RejestracjaWindow()
+    private String serverIp;
+
+    public RejestracjaWindow(String serverIp)
     {
+        this.serverIp = serverIp;
         initComponents();
     }
 
     private void initComponents()
     {
-        anulujButton.addActionListener(new ActionListener()
-        {
+        final RejestracjaWindow rejestracjaWindow = this;
+        anulujButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                JFrame topFrame = (JFrame)SwingUtilities.getWindowAncestor(RejestracjaWindow);
+            public void actionPerformed(ActionEvent e) {
+                JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(RejestracjaWindow);
                 topFrame.dispose();
                 MainWindow.getFrames()[0].setVisible(true);
             }
         });
+
+        zarejestrujButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //GreetingClient c = new GreetingClient(rejestracjaWindow);
+                //c.connect(serverIp);
+
+               /* if (c.connect(serverIp) == false)
+                {
+                    JOptionPane.showMessageDialog(RejestracjaWindow, "Podany użytkownik już istnieje...", "Błąd rejestracji", JOptionPane.ERROR_MESSAGE);
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(RejestracjaWindow, "Rejestracja zakończyła się sukcesem...", "Rejestracja", JOptionPane.INFORMATION_MESSAGE);
+                }*/
+
+            }
+        });
     }
 
-    public static void openRejestracjaWindow()
+    public String getLogin()
     {
-        JFrame frame = new JFrame("Komunikator - Rejestracja");
-        frame.setContentPane(new RejestracjaWindow().RejestracjaWindow);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+        String text = txtLogin.getText().toString();
+        System.out.println("Login: " + text);
+        return text;
+    }
+
+    public String getHaslo()
+    {
+        String text = txtHaslo.getText().toString();
+        System.out.println("Haslo: " + text);
+        return text;
+    }
+
+    public void setTxtHaslo(JPasswordField txtHaslo)
+    {
+        this.txtHaslo = txtHaslo;
+    }
+
+    public void setTxtLogin(JTextField txtLogin)
+    {
+        this.txtLogin = txtLogin;
+    }
+
+    public JPanel getRejestracjaWindow() {
+        return RejestracjaWindow;
     }
 }

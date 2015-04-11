@@ -41,31 +41,28 @@ public class GreetingClient
         String nick = okno2.getLogin() /*args[2]*/;
         String password = okno2.getHaslo()/*args[3]*/;
 
+
         try
         {
-            System.out.println("Łączenie z " + serverIp
-                    + " na porcie " + port);
+            System.out.println("Łączenie z " + serverIp + " na porcie " + port);
             Socket client = new Socket(serverIp, port);
-            System.out.println("Połączono z "
-                    + client.getRemoteSocketAddress());
+            System.out.println("Połączono z " + client.getRemoteSocketAddress());
             OutputStream outToServer = client.getOutputStream();
-            DataOutputStream out =
-                    new DataOutputStream(outToServer);
+            DataOutputStream out = new DataOutputStream(outToServer);
 
-            out.writeUTF(nick + ";" + password);
+            out.writeUTF("login;" + nick + ";" + password);
             InputStream inFromServer = client.getInputStream();
-            DataInputStream in =
-                    new DataInputStream(inFromServer);
+            DataInputStream in = new DataInputStream(inFromServer);
             String input = in.readUTF();
-            if ("true".equals(input))
+            if ("login;true".equals(input))
             {
                 return true;
             }
-            else if ("false".equals(input))
+            else //nie udalo sie zalogowac
             {
+                client.close();
                 return false;
             }
-            client.close();
         }
         catch (IOException e)
         {

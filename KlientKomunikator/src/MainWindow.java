@@ -44,7 +44,7 @@ public class MainWindow extends JFrame {
 
         rejestracjaButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                RejestracjaWindow.openRejestracjaWindow();
+                openRejestracjaWindow(getServerIpAddress());
                 JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(MainWindow);
                 topFrame.dispose();
             }
@@ -61,6 +61,16 @@ public class MainWindow extends JFrame {
         frame.setVisible(true);
     }
 
+    public static void openRejestracjaWindow(String serverIp)
+    {
+        JFrame frame = new JFrame("Komunikator - Rejestracja");
+        RejestracjaWindow rejestracjaWindow = new RejestracjaWindow(serverIp);
+        frame.setContentPane(rejestracjaWindow.getRejestracjaWindow());
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
     public String getServerIpAddress() {
         String ipAddress = cmbAdresSerwera.getSelectedItem().toString();
         System.out.println("Obecny adres IP: " + ipAddress);
@@ -70,13 +80,6 @@ public class MainWindow extends JFrame {
     public void setCmbAdresSerwera(JComboBox cmbAdresSerwera) {
         this.cmbAdresSerwera = cmbAdresSerwera;
     }
-
-    /*public String adresSerwera()
-    {
-        String text = cmbAdresSerwera.getSelectedItem().toString();
-        System.out.println("Obecny adres IP: " + text);
-        return text;
-    }*/
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Komunikator");
