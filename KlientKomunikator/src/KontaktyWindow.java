@@ -1,14 +1,11 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 /**
  * Created by Michał Wrzesień on 2015-03-22.
  */
-public class KontaktyWindow
-{
+public class KontaktyWindow {
     private JButton historiaButton;
     private JButton dodajKontaktButton;
     private JTable Użytkownicy;
@@ -16,6 +13,10 @@ public class KontaktyWindow
     private JButton oAplikacjiButton;
 
     public KontaktyWindow() {
+        initComponents();
+    }
+
+    private void initComponents() {
         oAplikacjiButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 OAplikacjiDialog.openOAplikacjiDialog();
@@ -29,8 +30,7 @@ public class KontaktyWindow
         });
     }
 
-    private void createUIComponents()
-    {
+    private void createUIComponents() {
         // TODO: place custom component creation code here
         String[] columnNames = {"Nick", "Status"};
         Object[][] data = {{"Admin", "niedostępny"}};
@@ -39,7 +39,7 @@ public class KontaktyWindow
 
     }
 
-    public static void main(String[] args)
+    /*public static void main(String[] args)
     {
         JFrame frame = new JFrame("Komunikator - Kontakty");
         JPanel kontaktyWindow = new KontaktyWindow().KontaktyWindow;
@@ -47,9 +47,9 @@ public class KontaktyWindow
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-    }
+    }*/
 
-    public void show() {
+    public void showKontaktyWindow() {
         JFrame frame = new JFrame("Komunikator - Kontakty");
         JPanel kontaktyWindow = new KontaktyWindow().KontaktyWindow;
         frame.setContentPane(kontaktyWindow);

@@ -32,7 +32,7 @@ public class MainWindow extends JFrame {
             }
         });*/
 
-        final MainWindow mainWindow = this;
+        //final MainWindow mainWindow = this;
 
         logowanieButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -80,13 +80,13 @@ public class MainWindow extends JFrame {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Komunikator");
-        MainWindow obj = new MainWindow();
-        frame.setContentPane(obj.MainWindow);
+        MainWindow mainwindow = new MainWindow();
+        frame.setContentPane(mainwindow.MainWindow);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
 
-        //GreetinClient c = new GreetinClient(obj);
+        //GreetingClient c = new GreetingClient(obj);
     }
 }
 

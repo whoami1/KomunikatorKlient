@@ -12,7 +12,6 @@ public class LogowanieWindow extends JFrame
     private JPanel LogowanieWindow;
     private JButton anulujButton;
     private JButton zalogujButton;
-    private JLabel lblStanLogowania;
     private String serverIp;
 
     public LogowanieWindow(String serverIp)
@@ -38,17 +37,17 @@ public class LogowanieWindow extends JFrame
         zalogujButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GreetinClient c = new GreetinClient(logowanieWindow);
+                GreetingClient c = new GreetingClient(logowanieWindow);
                 //c.connect(serverIp);
 
                 if (c.connect(serverIp) == false)
                 {
-                    JOptionPane.showMessageDialog(LogowanieWindow, "Incorrect login or password", "Autenthication Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(LogowanieWindow, "Nieprawidłowy login albo hasło...", "Błąd uwierzytelniania", JOptionPane.ERROR_MESSAGE);
                 }
                 else
                 {
                     KontaktyWindow kontaktyWindow = new KontaktyWindow();
-                    kontaktyWindow.show();
+                    kontaktyWindow.showKontaktyWindow();
                     ((JFrame)SwingUtilities.getWindowAncestor(LogowanieWindow)).setVisible(false);
                 }
                 //
@@ -83,4 +82,7 @@ public class LogowanieWindow extends JFrame
     public JPanel getLogowanieWindow() {
         return LogowanieWindow;
     }
+
+
+
 }
