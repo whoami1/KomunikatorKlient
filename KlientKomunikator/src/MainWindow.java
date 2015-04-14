@@ -51,7 +51,7 @@ public class MainWindow extends JFrame {
         });
     }
 
-    public static void openLogowanieWindow(String serverIp)
+    public void openLogowanieWindow(String serverIp)
     {
         JFrame frame = new JFrame("Komunikator - Logowanie");
         LogowanieWindow logowanieWindow = new LogowanieWindow(serverIp);

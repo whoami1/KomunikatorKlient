@@ -11,12 +11,16 @@ public class KontaktyWindow {
     private JTable Użytkownicy;
     private JPanel KontaktyWindow;
     private JButton oAplikacjiButton;
+    private JLabel lblUruchomionyUzytkownik;
 
-    public KontaktyWindow() {
+    public KontaktyWindow()
+    {
         initComponents();
     }
 
-    private void initComponents() {
+    private void initComponents()
+    {
+        lblUruchomionyUzytkownik.setText("uruchomiony użytkownik");
         oAplikacjiButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 OAplikacjiDialog.openOAplikacjiDialog();

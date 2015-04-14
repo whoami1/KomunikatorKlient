@@ -33,21 +33,29 @@ public class RejestracjaWindow
             }
         });
 
-        zarejestrujButton.addActionListener(new ActionListener() {
+        zarejestrujButton.addActionListener(new ActionListener()
+        {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                //GreetingClient c = new GreetingClient(rejestracjaWindow);
-                //c.connect(serverIp);
+            public void actionPerformed(ActionEvent e)
+            {
+                GreetingClient c = new GreetingClient(rejestracjaWindow);
+                //c.connect("register",serverIp, getLogin(), getHaslo());
 
-               /* if (c.connect(serverIp) == false)
+                if(c.connect(serverIp))
                 {
-                    JOptionPane.showMessageDialog(RejestracjaWindow, "Podany użytkownik już istnieje...", "Błąd rejestracji", JOptionPane.ERROR_MESSAGE);
+                    if(c.register(getLogin(), getHaslo()))
+                    {
+                        JOptionPane.showMessageDialog(RejestracjaWindow, "Rejestracja zakończyła się sukcesem...", "Rejestracja", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(RejestracjaWindow, "Podany użytkownik już istnieje...", "Błąd rejestracji", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(RejestracjaWindow, "Rejestracja zakończyła się sukcesem...", "Rejestracja", JOptionPane.INFORMATION_MESSAGE);
-                }*/
-
+                    JOptionPane.showMessageDialog(RejestracjaWindow, "Nie udało się połączyć", "Błąd", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
     }

@@ -38,19 +38,23 @@ public class LogowanieWindow extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) {
                 GreetingClient c = new GreetingClient(logowanieWindow);
-                //c.connect(serverIp);
-
-                if (c.connect(serverIp) == false)
+                if(c.connect(serverIp))
                 {
-                    JOptionPane.showMessageDialog(LogowanieWindow, "Nieprawidłowy login albo hasło...", "Błąd uwierzytelniania", JOptionPane.ERROR_MESSAGE);
+                    if(c.login(getLogin(), getHaslo()))
+                    {
+                        KontaktyWindow kontaktyWindow = new KontaktyWindow();
+                        kontaktyWindow.showKontaktyWindow();
+                        ((JFrame)SwingUtilities.getWindowAncestor(LogowanieWindow)).setVisible(false);
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(LogowanieWindow, "Nieprawidłowy login albo hasło...", "Błąd uwierzytelniania", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
                 else
                 {
-                    KontaktyWindow kontaktyWindow = new KontaktyWindow();
-                    kontaktyWindow.showKontaktyWindow();
-                    ((JFrame)SwingUtilities.getWindowAncestor(LogowanieWindow)).setVisible(false);
+                    JOptionPane.showMessageDialog(LogowanieWindow, "Nie udało się połączyć", "Błąd", JOptionPane.ERROR_MESSAGE);
                 }
-                //
             }
         });
     }
