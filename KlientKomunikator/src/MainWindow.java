@@ -89,7 +89,7 @@ public class MainWindow extends JFrame {
         frame.pack();
         frame.setVisible(true);
 
-        //GreetingClient c = new GreetingClient(obj);
+        //Client c = new Client(obj);
     }
 }
 

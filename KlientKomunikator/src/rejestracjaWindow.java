@@ -38,12 +38,11 @@ public class RejestracjaWindow
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                GreetingClient c = new GreetingClient(rejestracjaWindow);
-                //c.connect("register",serverIp, getLogin(), getHaslo());
+                Client c = new Client();
 
                 if(c.connect(serverIp))
                 {
-                    if(c.register(getLogin(), getHaslo()))
+                    if(c.register(getLogin(), getHaslo()) == false)
                     {
                         JOptionPane.showMessageDialog(RejestracjaWindow, "Rejestracja zakończyła się sukcesem...", "Rejestracja", JOptionPane.INFORMATION_MESSAGE);
                     }

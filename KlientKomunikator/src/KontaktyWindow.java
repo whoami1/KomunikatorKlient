@@ -13,14 +13,18 @@ public class KontaktyWindow {
     private JButton oAplikacjiButton;
     private JLabel lblUruchomionyUzytkownik;
 
-    public KontaktyWindow()
+    private String nazwaUzytkownika;
+
+    public KontaktyWindow(String nazwaUzytkownika)
     {
+        this.nazwaUzytkownika = nazwaUzytkownika;
         initComponents();
     }
 
     private void initComponents()
     {
-        lblUruchomionyUzytkownik.setText("uruchomiony użytkownik");
+
+        lblUruchomionyUzytkownik.setText("Konto użytkownika: " + nazwaUzytkownika);
         oAplikacjiButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 OAplikacjiDialog.openOAplikacjiDialog();
@@ -43,19 +47,9 @@ public class KontaktyWindow {
 
     }
 
-    /*public static void main(String[] args)
-    {
-        JFrame frame = new JFrame("Komunikator - Kontakty");
-        JPanel kontaktyWindow = new KontaktyWindow().KontaktyWindow;
-        frame.setContentPane(kontaktyWindow);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }*/
-
     public void showKontaktyWindow() {
         JFrame frame = new JFrame("Komunikator - Kontakty");
-        JPanel kontaktyWindow = new KontaktyWindow().KontaktyWindow;
+        JPanel kontaktyWindow = new KontaktyWindow(nazwaUzytkownika).KontaktyWindow;
         frame.setContentPane(kontaktyWindow);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

@@ -37,12 +37,12 @@ public class LogowanieWindow extends JFrame
         zalogujButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GreetingClient c = new GreetingClient(logowanieWindow);
+                Client c = new Client();
                 if(c.connect(serverIp))
                 {
                     if(c.login(getLogin(), getHaslo()))
                     {
-                        KontaktyWindow kontaktyWindow = new KontaktyWindow();
+                        KontaktyWindow kontaktyWindow = new KontaktyWindow(getLogin());
                         kontaktyWindow.showKontaktyWindow();
                         ((JFrame)SwingUtilities.getWindowAncestor(LogowanieWindow)).setVisible(false);
                     }
