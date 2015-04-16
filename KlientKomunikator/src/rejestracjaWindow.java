@@ -42,13 +42,13 @@ public class RejestracjaWindow
 
                 if(c.connect(serverIp))
                 {
-                    if(c.register(getLogin(), getHaslo()) == false)
+                    if(c.register(getLogin(), getHaslo()))
                     {
-                        JOptionPane.showMessageDialog(RejestracjaWindow, "Rejestracja zakończyła się sukcesem...", "Rejestracja", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(RejestracjaWindow, "Podany użytkownik już istnieje...", "Błąd rejestracji", JOptionPane.ERROR_MESSAGE);
                     }
                     else
                     {
-                        JOptionPane.showMessageDialog(RejestracjaWindow, "Podany użytkownik już istnieje...", "Błąd rejestracji", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(RejestracjaWindow, "Rejestracja zakończyła się sukcesem...", "Rejestracja", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
                 else

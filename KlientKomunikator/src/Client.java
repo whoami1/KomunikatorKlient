@@ -1,7 +1,9 @@
 import pl.entity.request.LoginRequest;
 import pl.entity.request.RegisterRequest;
+import pl.entity.request.TestowaWiadomoscRequest;
 import pl.entity.response.LoginResponse;
 import pl.entity.response.RegistrationResponse;
+import pl.entity.response.TestowaWiadomoscResponse;
 
 import java.io.*;
 import java.net.Socket;
@@ -77,7 +79,18 @@ public class Client {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return true;
+        return false; //sprawdzic zachowanie
+    }
 
+    public boolean wyslanieTestowejWiadomosciNaSerwer(String userLogin, String text)
+    {
+        try {
+            out.writeObject(new TestowaWiadomoscRequest(userLogin,text));
+            TestowaWiadomoscResponse testowaWiadomoscResponse = (TestowaWiadomoscResponse) read();
+            return testowaWiadomoscResponse.isSucces();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

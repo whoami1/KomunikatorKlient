@@ -37,12 +37,12 @@ public class LogowanieWindow extends JFrame
         zalogujButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Client c = new Client();
-                if(c.connect(serverIp))
+                Client client = new Client();
+                if(client.connect(serverIp))
                 {
-                    if(c.login(getLogin(), getHaslo()))
+                    if(client.login(getLogin(), getHaslo()))
                     {
-                        KontaktyWindow kontaktyWindow = new KontaktyWindow(getLogin());
+                        KontaktyWindow kontaktyWindow = new KontaktyWindow(client, getLogin());
                         kontaktyWindow.showKontaktyWindow();
                         ((JFrame)SwingUtilities.getWindowAncestor(LogowanieWindow)).setVisible(false);
                     }
@@ -53,7 +53,7 @@ public class LogowanieWindow extends JFrame
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(LogowanieWindow, "Nie udało się połączyć", "Błąd", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(LogowanieWindow, "Połączenie nie mogło zostać zreazlizowane...", "Błąd połączenia", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -61,16 +61,16 @@ public class LogowanieWindow extends JFrame
 
     public String getLogin()
     {
-        String text = txtLogin.getText().toString();
-        System.out.println("Login: " + text);
-        return text;
+        String login = txtLogin.getText().toString();
+        System.out.println("Login: " + login);
+        return login;
     }
 
     public String getHaslo()
     {
-        String text = txtHaslo.getText().toString();
-        System.out.println("Haslo: " + text);
-        return text;
+        String haslo = txtHaslo.getText().toString();
+        System.out.println("Haslo: " + haslo);
+        return haslo;
     }
 
     public void setTxtHaslo(JPasswordField txtHaslo)
